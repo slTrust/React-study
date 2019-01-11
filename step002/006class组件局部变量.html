@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/react/16.7.0-alpha.2/umd/react.development.js"></script>  
+    <script src="https://cdn.bootcss.com/react-dom/16.7.0-alpha.2/umd/react-dom.production.min.js"></script>
+</head>
+<body>
+<div id="root"></div>
+<script>
+// 规定组件的参数叫做 props 
+class App2 extends React.Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            number:0
+        }
+    }
+    add(){
+
+        /*
+        //报错
+        this.state.number +=1
+        // 而且这里的this 是 undefined
+        // 因为react 调用 onClick的时候是这样调用的
+        onClick = add.call(undefined, 参数)
+        React强制把this变成 undefined
+        */
+
+        // 这样也是不能修改的
+        // this.state.number +=1
+        // 必须要用 setState
+        this.setState({
+            number:this.state.number + 1
+        })
+
+    }
+    render(){
+        return (
+            <div>
+                app2{this.props.name}
+                <div>
+                    {this.state.number}
+                    <button onClick={this.add.bind(this)}>+</button>
+                </div>
+            </div>
+        )
+        // 新手必犯错 onClick = {this.add()}  
+        // add()是函数的返回值
+        // <button onClick={this.add()}>+</button>
+
+        // 绑定this有两种方式
+        /*
+        第一种 bind(this)
+        onClick={this.add.bind(this)}
+        第二种 箭头函数
+        onClick={()=>this.add}
+        */
+    }
+}
+
+function render(){
+    ReactDOM.render(
+        <App2 name="hjx"/>,
+        document.querySelector('#root')
+    )
+}
+
+render();
+</script>
+</body>
+</html>

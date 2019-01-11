@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/react/16.7.0-alpha.2/umd/react.development.js"></script>  
+    <script src="https://cdn.bootcss.com/react-dom/16.7.0-alpha.2/umd/react-dom.production.min.js"></script>
+</head>
+<body>
+<div id="root"></div>
+<script>
+class Box1 extends React.Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            number:0
+        }
+    }
+    add(){
+        this.setState({
+            number:this.state.number + 1
+        })
+    }
+    minus(){
+        this.setState({
+            number:this.state.number - 1
+        })
+    }
+    render(){
+        return (
+            <div>
+                Box1-{this.props.name}
+                <div>
+                    {this.state.number}
+                    <button onClick={this.add.bind(this)}>+</button>
+                    <button onClick={this.minus.bind(this)}>-</button>
+                </div>
+            </div>
+        )
+    }
+}
+
+class Box2 extends React.Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            number:0
+        }
+    }
+    add(){
+        this.setState({
+            number:this.state.number + 1
+        })
+    }
+    minus(){
+        this.setState({
+            number:this.state.number - 1
+        })
+    }
+    render(){
+        return (
+            <div>
+                Box2-{this.props.name}
+                <div>
+                    {this.state.number}
+                    <button onClick={this.add.bind(this)}>+</button>
+                    <button onClick={this.minus.bind(this)}>-</button>
+                </div>
+            </div>
+        )
+    }
+}
+
+function App(props){
+    return (
+        <div>
+            <Box1 name="hjx1"/>
+            <Box2 name="hjx2"/>
+        </div>
+    )
+}
+
+function render(){
+    ReactDOM.render(
+        <App/>,
+        document.querySelector('#root')
+    )
+}
+
+render();
+</script>
+</body>
+</html>

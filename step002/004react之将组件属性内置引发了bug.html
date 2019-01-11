@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/react/16.7.0-alpha.2/umd/react.development.js"></script>  
+    <script src="https://cdn.bootcss.com/react-dom/16.7.0-alpha.2/umd/react-dom.production.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script>
+        
+        render()
+
+        function App(){
+            return (
+                <div>
+                    <Box1 name="加一"/>
+                    <Box2 name="加二"/>
+                </div>
+            )
+        }
+
+        function Box1(obj){
+            let number1 = 0 ;
+            console.log('把number变成 0',number1)
+            let add1 = ()=>{
+                number1 += 1;
+                console.log('把number变成 1',number1)
+                render();
+            }
+            let minus1 = ()=>{
+                number1 -= 1;
+                render();
+            }
+            return (
+                <div class="container">
+                    我的name是{obj.name}
+                    <span class="red"> { number1 } </span>
+                    <button onClick= { add1 } >+</button>
+                    <button onClick= { minus1 } >-</button>
+                </div>
+            )
+        }
+
+        function Box2(obj){
+            let number2 = 0 ;
+            let add2 = ()=>{
+                number2 += 1;
+                render();
+            }
+            let minus2 = ()=>{
+                number2 -= 1;
+                render();
+            }
+            return (
+                <div class="container">
+                    我的name是{obj.name}
+                    <span class="red"> { number2 } </span>
+                    <button onClick= { add2 } >+</button>
+                    <button onClick= { minus2 } >-</button>
+                </div>
+            )
+        }
+
+        function render(){
+            ReactDOM.render(
+                <App/>,
+                document.querySelector('#root')
+            )
+        }
+
+        /*
+        思路是没错的
+        错就错在了 render 
+        */
+
+      
+    </script>
+</body>
+</html>

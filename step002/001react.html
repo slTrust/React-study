@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/react/16.7.0-alpha.2/umd/react.development.js"></script>  
+    <script src="https://cdn.bootcss.com/react-dom/16.7.0-alpha.2/umd/react-dom.production.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script>
+        let number = 0 ;
+        let add = ()=>{
+            number += 1;
+            render();
+        }
+        let minus = ()=>{
+            number -= 1;
+            render();
+        }
+        render()
+
+        function App(){
+            return (
+                <div>
+                    <Box1/>
+                </div>
+            )
+        }
+
+        function Box1(){
+            return (
+                <div class="container">
+                    <span class="red"> { number } </span>
+                    <button onClick= { add } >+</button>
+                    <button onClick= { minus } >-</button>
+                </div>
+            )
+        }
+
+        function render(){
+            ReactDOM.render(
+                <App/>,
+                document.querySelector('#root')
+            )
+        }
+
+      
+    </script>
+</body>
+</html>
