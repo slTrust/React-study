@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/react/16.7.0-alpha.2/umd/react.development.js"></script>  
+    <script src="https://cdn.bootcss.com/react-dom/16.7.0-alpha.2/umd/react-dom.production.min.js"></script>
+    <style>
+    *{margin:0;padding:0;box-sizing: border-box;}
+    .header{
+        display:flex;
+        justify-content:center;
+    }
+
+    .track{
+        border:1px solid black;
+    }
+    .player{
+        transition:all 1s linear;
+    }
+    </style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+
+function App(){
+    let success1 = ()=>{console.log('兔子跑完了')}
+    let success2 = ()=>{console.log('乌龟跑完了')}
+    return (
+      <div>
+        <div class="header">
+            <Time1/>
+            <Judge/>
+            <Time2/>
+        </div>
+        <Track1 success={success1}/>
+        <Track2 success={success2}/>
+      </div>
+    )
+}
+
+// 计时器
+function Time1(){
+    return (
+        <div>
+            <h2>🐰用时</h2>
+            <div>0</div>
+        </div>
+    )
+}
+
+// 计时器
+function Time2(){
+    return (
+        <div>
+            <h2>🐢用时</h2>
+            <div>0</div>
+        </div>
+    )
+}
+
+// 裁判
+function Judge(){
+    return (
+        <div>裁判</div>
+    )
+}
+// 跑道
+class Track1 extends React.Component{
+    constructor(props){
+        super() // 必须调用 super 否则报错
+        let n = 0;
+        this.state = {
+            style:{
+                transform:`translateX(${n}%)`
+            }
+        };
+        let timerId = setInterval(()=>{
+            n += 10
+            this.setState({
+                style:{transform:`translateX(${n}%)`}
+            })
+            if(n>=100){
+                window.clearInterval(timerId)
+                //通知 我跑完了
+                this.props.success()
+            }
+        },1000)
+    }
+    render(){ 
+        return(
+            <div>
+                <div class="player" style={this.state.style}>🐰</div>
+                <div class="track"></div>
+            </div>
+        )
+    }
+}
+// 跑道
+class Track2 extends React.Component{
+    constructor(props){
+        super() // 必须调用 super 否则报错
+        let n = 0;
+        this.state = {
+            style:{
+                transform:`translateX(${n}%)`
+            }
+        };
+        let timerId = setInterval(()=>{
+            n += 5
+            this.setState({
+                style:{transform:`translateX(${n}%)`}
+            })
+            if(n>=100){
+                window.clearInterval(timerId)
+                //通知 我跑完了
+                this.props.success()
+            }
+        },1000)
+    }
+    render(){ 
+        return(
+            <div>
+                <div class="player" style={this.state.style}>🐢</div>
+                <div class="track"></div>
+            </div>
+        )
+    }
+}
+
+function render(){
+    ReactDOM.render(
+        <App/>,
+        document.querySelector('#root')
+    )
+}
+
+render();
+</script>
+</body>
+</html>
