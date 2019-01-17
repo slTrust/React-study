@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .App {
+        font-family: sans-serif;
+        text-align: center;
+        }
+
+        .box {
+        border: 1px solid red;
+        padding: 10px;
+        }
+
+    </style>
+</head>
+<body>
+<script>
+import React from "react";
+import ReactDOM from "react-dom";
+
+import "./styles.css";
+
+function F1() {
+  return (
+    <div className="box">
+      1111
+      <F2 />
+    </div>
+  );
+}
+function F2() {
+  return (
+    <div className="box">
+      2222
+      <F3 />
+    </div>
+  );
+}
+function F3() {
+  return (
+    <div className="box">
+      3333
+      <nContext.Consumer>{xxx => <F4 n4={xxx} />}</nContext.Consumer>
+    </div>
+  );
+}
+function F4(props) {
+  return <div className="box">4444,{props.n4}</div>;
+}
+
+const nContext = React.createContext();
+
+class App extends React.Component {
+  render() {
+    return (
+      <div>
+        <nContext.Provider value="999">
+          <F1 />
+        </nContext.Provider>
+      </div>
+    );
+  }
+}
+
+const rootElement = document.getElementById("root");
+ReactDOM.render(<App />, rootElement);    
+</script>
+</body>
+</html>

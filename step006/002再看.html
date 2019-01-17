@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+<script>
+// f1多了一个 参数 n1
+// 我想要后面的每一个函数都能获取这个 n1
+// 咋办？
+function f1(n1) {
+  console.log(1,n1);
+  f2(n1);
+}
+function f2(n2) {
+  //这里的 n2就是 f1里的 n1
+  console.log(2,n2);
+  f3(n2);
+}
+function f3(n3) {
+  console.log(3,n3);
+  f4(n3);
+}
+function f4(n4) {
+  console.log(4,n4);
+}
+
+{
+    let n = 100;
+    f1( n );
+    console.log("done");
+}
+/*
+函数里的函数 得到n
+现在则需要 层层传递
+*/
+</script>
+</body>
+</html>

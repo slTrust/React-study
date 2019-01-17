@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+<script>
+function f1() {
+  console.log(1);
+  f2();
+}
+function f2() {
+  //这里的 n2就是 f1里的 n1
+  console.log(2);
+  f3();
+}
+function f3() {
+  console.log(3);
+  f4();
+}
+function f4() {
+  console.log(4,n);
+}
+
+let n = 100;
+{
+    f1( n );
+    console.log("done");
+}
+/*
+f4单独 得到n 不想层层传递
+现在则需要 将 n放在全局
+*/
+</script>
+</body>
+</html>

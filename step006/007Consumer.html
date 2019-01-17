@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+import React from "react";
+import ReactDOM from "react-dom";
+
+// Ccc就是 Consumer
+function Ccc(props) {
+
+  /* 
+  props.children 可以获取 Ccc里得内容 <Ccc>{fn}<Ccc/>
+  如果 传递一个函数
+  props.children 就是那个函数 fn
+  传递 <Ccc>{fn}{fn2}<Ccc/>
+  那么 props.children 就是 [fn,fn2]
+  */
+  
+  let info = 100;
+  let result = props.children(info);
+  return <div>{result}</div>;
+}
+
+function App() {
+  return (
+    <div>
+      <Ccc c1="c1">
+        {msg => {
+          console.log(`我得到的信息是${msg}`);
+          return <div>我得到的数据是：{msg}</div>;
+        }}
+      </Ccc>
+    </div>
+  );
+}
+
+const rootElement = document.getElementById("root");
+ReactDOM.render(<App />, rootElement);
+
+</script>
+</body>
+</html>
