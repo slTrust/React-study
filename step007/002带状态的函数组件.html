@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+// hooks 要求 react版本至少为 16.7.0
+// hooks 要求 react版本至少为 16.7.0
+// hooks 要求 react版本至少为 16.7.0
+import React from "react";
+import ReactDOM from "react-dom";
+
+// step01 引入 useState
+import { useState } from "react";
+
+function App() {
+  // 这样定义肯定不行
+  // let count = 0;
+  // let add = function(){}
+
+  // 正确定义状态
+  const [count, setCount] = useState(0); //count 初始值是 0
+  const add = () => {
+    setCount(count + 1);
+  };
+
+  return (
+    <div>
+      <div>{count}</div>
+      <div>
+        <button onClick={add}>add</button>
+      </div>
+    </div>
+  );
+}
+
+const rootElement = document.getElementById("root");
+ReactDOM.render(<App />, rootElement);
+</script>
+</body>
+</html>

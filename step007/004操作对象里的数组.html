@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+import React from "react";
+import ReactDOM from "react-dom";
+
+// step01 引入 useState
+import { useState } from "react";
+
+function App() {
+  const [count, setCount] = useState(0); //count 初始值是 0
+  const [user, setUser] = useState({
+    name: "hjx",
+    age: 18,
+    hobbies: ["火影", "编程", "王者"]
+  });
+
+  const add = () => {
+    setCount(count + 1);
+  };
+  const minus = () => {
+    setCount(count - 1);
+  };
+
+  const addAge = () => {
+    setUser({
+      ...user,
+      age: user.age + 1
+    });
+  };
+  const addHobbie = () => {
+    let num = parseInt(Math.random() * 100);
+    setUser({
+      ...user,
+      hobbies: [...user.hobbies, num]
+    });
+  };
+
+  return (
+    <div>
+      <div>{count}</div>
+      <div>
+        <button onClick={add}>+1</button>
+        <button onClick={minus}>-1</button>
+        <hr />
+        userInfo:姓名 {user.name} 年纪{user.age}
+        <button onClick={addAge}>age++</button>
+        <hr />
+        爱好：{user.hobbies.join(",")}
+        <button onClick={addHobbie}>Hobbie++</button>
+      </div>
+    </div>
+  );
+}
+
+const rootElement = document.getElementById("root");
+ReactDOM.render(<App />, rootElement);
+
+</script>
+</body>
+</html>
