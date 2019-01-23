@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+<style>
+.box {
+  border: 1px solid #ccc;
+  text-align: center;
+  padding: 100px 0;
+  width: 90%;
+  margin: 0 auto;
+}
+</style>
+</head>
+<body>
+<script>
+import React from "react";
+import ReactDOM from "react-dom";
+import { useState } from "react";
+import "./styles.css";
+
+function Login() {
+  return <div className="box">登录</div>;
+}
+
+function Register() {
+  return <div className="box">注册</div>;
+}
+
+function App() {
+  let path = window.location.pathname;
+  // hash默认是带 '#'号的
+  let initUi = path === "/register" ? "注册" : "登录";
+  console.log(initUi);
+  let [ui, setUi] = useState(initUi);
+  let onClickLogin = () => {
+    setUi("登录");
+    history.pushState(null, "", "login");
+  };
+  let onClickRegister = () => {
+    setUi("注册");
+    history.pushState(null, "", "register");
+  };
+  return (
+    <div className="App">
+      <button onClick={onClickLogin}>login</button>
+      <button onClick={onClickRegister}>register</button>
+      <div>{ui === "登录" ? <Login /> : <Register />}</div>
+    </div>
+  );
+}
+
+const rootElement = document.getElementById("root");
+ReactDOM.render(<App />, rootElement);
+</script>
+</body>
+</html>
