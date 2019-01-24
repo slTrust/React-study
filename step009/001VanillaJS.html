@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root"></div>
+
+<script>
+let app = document.getElementById('root');
+
+// create 出现在js内存里
+let div = document.createElement('div');
+div.style.border = '1px solid red';
+
+// mount 之前 
+let state = 0;
+div.innerHTML = `<p>${state}</p>
+                <button>add</button>
+                <button>die</button>
+                `;
+
+// mount 挂载
+app.appendChild(div);
+
+
+
+div.querySelector('button').onclick = ()=>{
+    state += 1
+    // update div
+    div.querySelector('p').innerText = state;
+}
+
+div.querySelectorAll('button')[1].onclick = ()=>{
+    // remove div 但是要移干净
+    // 移除事件，移除引用
+    div.querySelector('button').onclick = null
+    div.querySelectorAll('button')[1].onclick = null
+    div.remove()
+    div = null
+    // 此时才是真正的  destroy div
+}
+
+
+</script>
+</body>
+</html>
