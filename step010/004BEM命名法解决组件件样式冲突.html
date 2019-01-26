@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+.father-title {
+  color: red;
+  border: 1px solid red;
+  padding: 10px;
+}
+
+.sun-title {
+  color: green;
+  border: 1px solid green;
+  padding: 10px;
+}
+</style>
+</head>
+<body>
+<script>
+import React from "react";
+import ReactDOM from "react-dom";
+
+import "./styles.css";
+
+function Father() {
+  return (
+    <div className="father-title">
+      父亲组件
+      <Sun />
+    </div>
+  );
+}
+function Sun() {
+  return (
+    <div>
+      <div className="sun-title">儿子组件</div>
+    </div>
+  );
+}
+
+const rootElement = document.getElementById("root");
+ReactDOM.render(<Father />, rootElement);
+</script>
+</body>
+</html>

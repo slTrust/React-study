@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+<style>
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.red {
+  color: red;
+}
+
+.border10 {
+  border: 10px solid red;
+}
+</style>
+</head>
+<body>
+<script>
+import React from "react";
+import ReactDOM from "react-dom";
+import classNames from "classnames";
+import "./styles.css";
+
+function App() {
+  return (
+    <div className="App">
+      <h1 className={classNames("red", "border10")}>Hello CodeSandbox</h1>
+    </div>
+  );
+}
+
+const rootElement = document.getElementById("root");
+ReactDOM.render(<App />, rootElement);
+</script>
+</body>
+</html>

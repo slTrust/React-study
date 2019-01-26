@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        .App {color: red;}
+    </style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+import React from "react";
+import ReactDOM from "react-dom";
+
+// 引入样式
+import "./styles.css";
+
+function App() {
+    //  react建议 class属性 使用 className 如果你不加可能依然可以运行。 建议就是按照react的建议做，不要自己作死。
+    return <div className="App">Hello World</div>;
+}
+
+const rootElement = document.getElementById("root");
+ReactDOM.render(<App />, rootElement);
+
+</script>    
+</body>
+</html>
