@@ -1,0 +1,13 @@
+.App {
+  text-align: center;
+}
+
+.btn{
+  border:1px solid red;
+  background: red;;
+  color:#fff;
+  padding:3px 10px;
+  box-shadow: 0 0 3px rgba(0,0,0,0.2);
+  margin:4px;
+  border-radius: 4px;
+}
